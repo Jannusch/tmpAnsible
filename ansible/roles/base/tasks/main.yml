@@ -39,6 +39,7 @@
       - tig
       - clang
       - ccache
+      - xvfb
 
 - name: Configure user
   user:
