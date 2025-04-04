@@ -46,7 +46,7 @@
       Type=Application
       Name=OMNeT++ IDE
       Exec=docker exec initopp bash -c "source /opt/omnetpp/setenv && omnetpp"
-      Icon=/home/studivm/.local/share/omnetpp/ide/icon.xpm
+      Icon=/home/studivm/.local/share/omnetpp/icon.xpm
       Categories=Science;
       StartupWMClass=OMNeT++ IDE
     dest: /home/studivm/.local/share/applications/omnetpp.desktop
