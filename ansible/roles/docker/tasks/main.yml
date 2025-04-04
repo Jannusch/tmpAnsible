@@ -29,12 +29,6 @@
     group: studivm
     mode: '0744'
 
-- name: Clone veins as example in workspaces
-  become_user: studivm
-  ansible.builtin.shell: |
-    cd $HOME/workspaces/
-    git clone https://github.com/sommer/veins --branch veins-5.3.1
-
 - name: Pull nsm-lab-container
   become_user: studivm
   community.docker.docker_container:
