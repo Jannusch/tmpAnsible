@@ -1,0 +1,54 @@
+---
+#
+# Ansible Playbook for building StudiVM
+# Copyright (C) 2018 Christoph Sommer <sommer@ccs-labs.org>
+#
+# Documentation for this template is at http://veins.car2x.org/
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+
+- name: Create Workspaces folder
+  become_user: studivm
+  ansible.builtin.file:
+    path: /home/studivm/workspaces
+    state: directory
+    owner: studivm
+    group: studivm
+    mode: '0644'
+
+- name: Clone veins as example in workspaces
+  ansible.builtin.shell: |
+    cd $HOME/workspaces/
+    git clone https://github.com/sommer/veins --branch veins-5.3.1
+
+- name: Pull nsm-lab-container
+  community.docker.docker_container:
+    name: initopp
+    image: dr.nsm.inf.tu-dresden.de/tud-internal/nsm-lab-container:ws24
+    state: started
+    restart_policy: always
+    volumes:
+      - /data
+    mounts:
+      - target: /workspaces
+        source: /home/studivm/workspaces
+        type: bind
+    volumes:
+      - studivm/.Xauthority:/root/.Xauthority:rw
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    env:
+      DISPLAY: $DISPLAY
+

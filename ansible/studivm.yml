@@ -23,5 +23,6 @@
   become: true
   roles:
     - base
+    - docker
     - finish
 
