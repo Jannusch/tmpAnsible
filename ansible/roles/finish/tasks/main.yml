@@ -38,111 +38,111 @@
     name:
       - epiphany-browser
 
-- name: Launcher Entry
-  become_user: studivm
-  copy:
-    content: |
-      [Desktop Entry]
-      Type=Application
-      Name=OMNeT++ IDE
-      Exec=omnetpp -data /home/studivm/workspace.omnetpp -import /home/studivm/src/studivm/README.txt
-      Icon=/home/veins/src/omnetpp/ide/icon.xpm
-      Categories=Science;
-      StartupWMClass=OMNeT++ IDE
-    dest: /home/studivm/.local/share/applications/omnetpp.desktop
-    mode: 0755
+# - name: Launcher Entry
+#   become_user: studivm
+#   copy:
+#     content: |
+#       [Desktop Entry]
+#       Type=Application
+#       Name=OMNeT++ IDE
+#       Exec=omnetpp -data /home/studivm/workspace.omnetpp -import /home/studivm/src/studivm/README.txt
+#       Icon=/home/veins/src/omnetpp/ide/icon.xpm
+#       Categories=Science;
+#       StartupWMClass=OMNeT++ IDE
+#     dest: /home/studivm/.local/share/applications/omnetpp.desktop
+#     mode: 0755
 
-- name: Launcher Entry
-  become_user: studivm
-  copy:
-    content: |
-      [Desktop Entry]
-      Type=Application
-      Name=veins_launchd
-      Exec=xterm -class veins_launchd -e /home/studivm/src/veins/bin/veins_launchd -vv
-      Icon=network-transmit-receive-symbolic
-      Categories=Science;
-      StartupWMClass=veins_launchd
-    dest: /home/studivm/.local/share/applications/veins_launchd.desktop
-    mode: 0755
+# - name: Launcher Entry
+#   become_user: studivm
+#   copy:
+#     content: |
+#       [Desktop Entry]
+#       Type=Application
+#       Name=veins_launchd
+#       Exec=xterm -class veins_launchd -e /home/studivm/src/veins/bin/veins_launchd -vv
+#       Icon=network-transmit-receive-symbolic
+#       Categories=Science;
+#       StartupWMClass=veins_launchd
+#     dest: /home/studivm/.local/share/applications/veins_launchd.desktop
+#     mode: 0755
 
-- name: Profile directory for online documentation
-  file:
-    path: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs
-    state: directory
-    owner: studivm
-    group: studivm
-    mode: 0755
+# - name: Profile directory for online documentation
+#   file:
+#     path: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs
+#     state: directory
+#     owner: studivm
+#     group: studivm
+#     mode: 0755
 
-- name: Launcher file for online documentation
-  become_user: studivm
-  copy:
-    content: |
-      [Desktop Entry]
-      Type=Application
-      Name=Veins documentation online
-      Exec=epiphany --application-mode --profile='/home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs' 'http://veins.car2x.org/documentation/'
-      Icon=help-faq
-      Categories=Science;
-      StartupWMClass=org.gnome.Epiphany.WebApp-veins-onlinedocs
-    dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs/org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop
-    mode: 0755
+# - name: Launcher file for online documentation
+#   become_user: studivm
+#   copy:
+#     content: |
+#       [Desktop Entry]
+#       Type=Application
+#       Name=Veins documentation online
+#       Exec=epiphany --application-mode --profile='/home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs' 'http://veins.car2x.org/documentation/'
+#       Icon=help-faq
+#       Categories=Science;
+#       StartupWMClass=org.gnome.Epiphany.WebApp-veins-onlinedocs
+#     dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs/org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop
+#     mode: 0755
 
-- name: App file for online documentation
-  become_user: studivm
-  copy:
-    content: ""
-    dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs/.app
-    mode: 0755
+# - name: App file for online documentation
+#   become_user: studivm
+#   copy:
+#     content: ""
+#     dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs/.app
+#     mode: 0755
 
-- name: Launcher entry for online documentation
-  become_user: studivm
-  file:
-    src: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs/org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop
-    dest: /home/studivm/.local/share/applications/org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop
-    state: link
+# - name: Launcher entry for online documentation
+#   become_user: studivm
+#   file:
+#     src: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs/org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop
+#     dest: /home/studivm/.local/share/applications/org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop
+#     state: link
 
-- name: Profile directory for offline documentation
-  file:
-    path: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs
-    state: directory
-    owner: studivm
-    group: studivm
-    mode: 0755
+# - name: Profile directory for offline documentation
+#   file:
+#     path: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs
+#     state: directory
+#     owner: studivm
+#     group: studivm
+#     mode: 0755
 
-- name: Launcher file for offline documentation
-  become_user: studivm
-  copy:
-    content: |
-      [Desktop Entry]
-      Type=Application
-      Name=Veins source code documentation (offline)
-      Exec=epiphany --application-mode --profile='/home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs' 'file:///home/studivm/src/veins/doc/doxy/index.html'
-      Icon=help-contents
-      Categories=Science;
-      StartupWMClass=org.gnome.Epiphany.WebApp-veins-offlinedocs
-    dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs/org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop
-    mode: 0755
+# - name: Launcher file for offline documentation
+#   become_user: studivm
+#   copy:
+#     content: |
+#       [Desktop Entry]
+#       Type=Application
+#       Name=Veins source code documentation (offline)
+#       Exec=epiphany --application-mode --profile='/home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs' 'file:///home/studivm/src/veins/doc/doxy/index.html'
+#       Icon=help-contents
+#       Categories=Science;
+#       StartupWMClass=org.gnome.Epiphany.WebApp-veins-offlinedocs
+#     dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs/org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop
+#     mode: 0755
 
-- name: App file for offline documentation
-  become_user: studivm
-  copy:
-    content: ""
-    dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs/.app
-    mode: 0755
+# - name: App file for offline documentation
+#   become_user: studivm
+#   copy:
+#     content: ""
+#     dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs/.app
+#     mode: 0755
 
-- name: Launcher entry for offline documentation
-  become_user: studivm
-  file:
-    src: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs/org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop
-    dest: /home/studivm/.local/share/applications/org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop
-    state: link
+# - name: Launcher entry for offline documentation
+#   become_user: studivm
+#   file:
+#     src: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs/org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop
+#     dest: /home/studivm/.local/share/applications/org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop
+#     state: link
 
-- name: Favourites
-  become_user: studivm
-  shell: |
-    set -exu
-    xvfb-run gsettings set org.gnome.shell favorite-apps "['omnetpp.desktop', 'veins_launchd.desktop', 'org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop', 'org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop', 'firefox-esr.desktop', 'org.gnome.Nautilus.desktop', 'terminator.desktop']"
+# - name: Favourites
+#   become_user: studivm
+#   shell: |
+#     set -exu
+#     xvfb-run gsettings set org.gnome.shell favorite-apps "['omnetpp.desktop', 'veins_launchd.desktop', 'org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop', 'org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop', 'firefox-esr.desktop', 'org.gnome.Nautilus.desktop', 'terminator.desktop']"
 
 - name: Copy background picture
   become_user: studivm
@@ -219,23 +219,23 @@
     dest: /home/studivm/bin/virtualbox-guest-install.sh
     mode: 0755
 
-- name: Build Workspace
-  become_user: studivm
-  shell: |
-    set -exu
-    source /home/studivm/.shrc
-    xvfb-run /home/studivm/src/omnetpp/ide/omnetpp --launcher.suppressErrors -data /home/studivm/workspace.omnetpp -nosplash -application org.eclipse.cdt.managedbuilder.core.headlessbuild -build all || echo "build all: exit code $? is suppressed"
-  args:
-    executable: /bin/bash
-    chdir: /home/studivm/src
+# - name: Build Workspace
+#   become_user: studivm
+#   shell: |
+#     set -exu
+#     source /home/studivm/.shrc
+#     xvfb-run /home/studivm/src/omnetpp/ide/omnetpp --launcher.suppressErrors -data /home/studivm/workspace.omnetpp -nosplash -application org.eclipse.cdt.managedbuilder.core.headlessbuild -build all || echo "build all: exit code $? is suppressed"
+#   args:
+#     executable: /bin/bash
+#     chdir: /home/studivm/src
 
-- name: Patch preferences to show (sub)projects in navigator without nesting
-  become_user: studivm
-  copy:
-    content: |
-      eclipse.preferences.version=1
-      org.eclipse.ui.navigator.ProjectExplorer.activatedExtensions=org.eclipse.cdt.make.ui.makeTargets.content\=true;org.eclipse.ui.navigator.resourceContent\=true;org.eclipse.cdt.ui.navigator.content\=true;org.eclipse.egit.ui.changeSetContent\=false;org.eclipse.ui.navigator.resources.workingSets\=true;org.eclipse.team.ui.patchSyncNavigatorContent\=true;org.eclipse.team.ui.resourceContent\=true;org.eclipse.ui.navigator.resources.nested.nestedProjectContentProvider\=false;org.eclipse.egit.ui.RepositoriesViewContent\=true;org.omnetpp.navigator.content\=true;
-      org.eclipse.ui.navigator.ProjectExplorer.filterActivation=\:org.eclipse.ui.navigator.resources.filters.startsWithDot\:org.eclipse.cdt.ui.navigator.filters.ForwardDeclarationFilter\:
-    dest: /home/studivm/workspace.omnetpp/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.navigator.prefs
-    mode: 0644
+# - name: Patch preferences to show (sub)projects in navigator without nesting
+#   become_user: studivm
+#   copy:
+#     content: |
+#       eclipse.preferences.version=1
+#       org.eclipse.ui.navigator.ProjectExplorer.activatedExtensions=org.eclipse.cdt.make.ui.makeTargets.content\=true;org.eclipse.ui.navigator.resourceContent\=true;org.eclipse.cdt.ui.navigator.content\=true;org.eclipse.egit.ui.changeSetContent\=false;org.eclipse.ui.navigator.resources.workingSets\=true;org.eclipse.team.ui.patchSyncNavigatorContent\=true;org.eclipse.team.ui.resourceContent\=true;org.eclipse.ui.navigator.resources.nested.nestedProjectContentProvider\=false;org.eclipse.egit.ui.RepositoriesViewContent\=true;org.omnetpp.navigator.content\=true;
+#       org.eclipse.ui.navigator.ProjectExplorer.filterActivation=\:org.eclipse.ui.navigator.resources.filters.startsWithDot\:org.eclipse.cdt.ui.navigator.filters.ForwardDeclarationFilter\:
+#     dest: /home/studivm/workspace.omnetpp/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.navigator.prefs
+#     mode: 0644
 
