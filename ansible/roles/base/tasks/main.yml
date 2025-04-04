@@ -42,7 +42,13 @@
       - xvfb
       - docker.io
       - curl
-      - htop 
+      - htop
+
+- name: Remove gnome-terminal
+  apt:
+    state: absent
+    name:
+      - gnome-terminal
 
 - name: Configure user
   user:
