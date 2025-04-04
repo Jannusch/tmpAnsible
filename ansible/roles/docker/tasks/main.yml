@@ -40,8 +40,6 @@
     image: dr.nsm.inf.tu-dresden.de/tud-internal/nsm-lab-container:ws24
     state: started
     restart_policy: always
-    volumes:
-      - /data
     mounts:
       - target: /workspaces
         source: /home/studivm/workspaces
