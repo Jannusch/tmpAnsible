@@ -27,7 +27,7 @@
     state: directory
     owner: studivm
     group: studivm
-    mode: '0644'
+    mode: '0744'
 
 - name: Clone veins as example in workspaces
   become_user: studivm
