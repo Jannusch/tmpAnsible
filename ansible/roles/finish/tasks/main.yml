@@ -52,19 +52,19 @@
     dest: /home/studivm/.local/share/applications/omnetpp.desktop
     mode: 0755
 
-# - name: Launcher Entry
-#   become_user: studivm
-#   copy:
-#     content: |
-#       [Desktop Entry]
-#       Type=Application
-#       Name=veins_launchd
-#       Exec=xterm -class veins_launchd -e /home/studivm/src/veins/bin/veins_launchd -vv
-#       Icon=network-transmit-receive-symbolic
-#       Categories=Science;
-#       StartupWMClass=veins_launchd
-#     dest: /home/studivm/.local/share/applications/veins_launchd.desktop
-#     mode: 0755
+- name: Launcher Entry
+  become_user: studivm
+  copy:
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Name=veins_launchd
+      Exec=xterm -class docker exec initopp -c "export PATH=$PATH:/opt/sumo/bin && veins_launchd -e /opt/veins/bin/veins_launchd -vv"
+      Icon=network-transmit-receive-symbolic
+      Categories=Science;
+      StartupWMClass=veins_launchd
+    dest: /home/studivm/.local/share/applications/veins_launchd.desktop
+    mode: 0755
 
 - name: Profile directory for online documentation
   file:
