@@ -1,6 +1,6 @@
 ---
 #
-# Ansible Playbook for building Instant Veins
+# Ansible Playbook for building StudiVM
 # Copyright (C) 2018 Christoph Sommer <sommer@ccs-labs.org>
 #
 # Documentation for this template is at http://veins.car2x.org/
@@ -19,11 +19,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-- hosts: all
-  become: true
-  roles:
-    - base
-    - docker
-    - omnetpp
-    - finish
 
+- name: Copy OMENeT++ IDE icon
+  become_user: studivm
+  copy:
+      src: "icon.xmp"
+      dest: "/home/studivm/.local/share/omnetpp/ide/icon.xpm"
+      mode: 0644
+
+    
