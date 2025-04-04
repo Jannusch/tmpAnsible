@@ -30,6 +30,7 @@
     mode: '0644'
 
 - name: Clone veins as example in workspaces
+  become_user: studivm
   ansible.builtin.shell: |
     cd $HOME/workspaces/
     git clone https://github.com/sommer/veins --branch veins-5.3.1
