@@ -7,5 +7,5 @@ sudo apt -y install ansible \
   docker;
 cd ansible;
 ansible-playbook --connection=local --inventory 127.0.0.1, studivm.yml
-
-sudo cleanup.sh
+cd ..
+sudo ./cleanup.sh
