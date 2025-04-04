@@ -38,19 +38,19 @@
     name:
       - epiphany-browser
 
-# - name: Launcher Entry
-#   become_user: studivm
-#   copy:
-#     content: |
-#       [Desktop Entry]
-#       Type=Application
-#       Name=OMNeT++ IDE
-#       Exec=omnetpp -data /home/studivm/workspace.omnetpp -import /home/studivm/src/studivm/README.txt
-#       Icon=/home/veins/src/omnetpp/ide/icon.xpm
-#       Categories=Science;
-#       StartupWMClass=OMNeT++ IDE
-#     dest: /home/studivm/.local/share/applications/omnetpp.desktop
-#     mode: 0755
+- name: Launcher Entry
+  become_user: studivm
+  copy:
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Name=OMNeT++ IDE
+      Exec=docker exec initopp bash -c "source /opt/omnetpp/setenv && omnetpp"
+      Icon=/home/veins/src/omnetpp/ide/icon.xpm
+      Categories=Science;
+      StartupWMClass=OMNeT++ IDE
+    dest: /home/studivm/.local/share/applications/omnetpp.desktop
+    mode: 0755
 
 # - name: Launcher Entry
 #   become_user: studivm
@@ -66,83 +66,83 @@
 #     dest: /home/studivm/.local/share/applications/veins_launchd.desktop
 #     mode: 0755
 
-# - name: Profile directory for online documentation
-#   file:
-#     path: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs
-#     state: directory
-#     owner: studivm
-#     group: studivm
-#     mode: 0755
+- name: Profile directory for online documentation
+  file:
+    path: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs
+    state: directory
+    owner: studivm
+    group: studivm
+    mode: 0755
 
-# - name: Launcher file for online documentation
-#   become_user: studivm
-#   copy:
-#     content: |
-#       [Desktop Entry]
-#       Type=Application
-#       Name=Veins documentation online
-#       Exec=epiphany --application-mode --profile='/home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs' 'http://veins.car2x.org/documentation/'
-#       Icon=help-faq
-#       Categories=Science;
-#       StartupWMClass=org.gnome.Epiphany.WebApp-veins-onlinedocs
-#     dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs/org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop
-#     mode: 0755
+- name: Launcher file for online documentation
+  become_user: studivm
+  copy:
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Name=Veins documentation online
+      Exec=epiphany --application-mode --profile='/home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs' 'http://veins.car2x.org/documentation/'
+      Icon=help-faq
+      Categories=Science;
+      StartupWMClass=org.gnome.Epiphany.WebApp-veins-onlinedocs
+    dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs/org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop
+    mode: 0755
 
-# - name: App file for online documentation
-#   become_user: studivm
-#   copy:
-#     content: ""
-#     dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs/.app
-#     mode: 0755
+- name: App file for online documentation
+  become_user: studivm
+  copy:
+    content: ""
+    dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs/.app
+    mode: 0755
 
-# - name: Launcher entry for online documentation
-#   become_user: studivm
-#   file:
-#     src: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs/org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop
-#     dest: /home/studivm/.local/share/applications/org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop
-#     state: link
+- name: Launcher entry for online documentation
+  become_user: studivm
+  file:
+    src: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-onlinedocs/org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop
+    dest: /home/studivm/.local/share/applications/org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop
+    state: link
 
-# - name: Profile directory for offline documentation
-#   file:
-#     path: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs
-#     state: directory
-#     owner: studivm
-#     group: studivm
-#     mode: 0755
+- name: Profile directory for offline documentation
+  file:
+    path: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs
+    state: directory
+    owner: studivm
+    group: studivm
+    mode: 0755
 
-# - name: Launcher file for offline documentation
-#   become_user: studivm
-#   copy:
-#     content: |
-#       [Desktop Entry]
-#       Type=Application
-#       Name=Veins source code documentation (offline)
-#       Exec=epiphany --application-mode --profile='/home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs' 'file:///home/studivm/src/veins/doc/doxy/index.html'
-#       Icon=help-contents
-#       Categories=Science;
-#       StartupWMClass=org.gnome.Epiphany.WebApp-veins-offlinedocs
-#     dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs/org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop
-#     mode: 0755
+- name: Launcher file for offline documentation
+  become_user: studivm
+  copy:
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Name=Veins source code documentation (offline)
+      Exec=epiphany --application-mode --profile='/home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs' 'file:///home/studivm/src/veins/doc/doxy/index.html'
+      Icon=help-contents
+      Categories=Science;
+      StartupWMClass=org.gnome.Epiphany.WebApp-veins-offlinedocs
+    dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs/org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop
+    mode: 0755
 
-# - name: App file for offline documentation
-#   become_user: studivm
-#   copy:
-#     content: ""
-#     dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs/.app
-#     mode: 0755
+- name: App file for offline documentation
+  become_user: studivm
+  copy:
+    content: ""
+    dest: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs/.app
+    mode: 0755
 
-# - name: Launcher entry for offline documentation
-#   become_user: studivm
-#   file:
-#     src: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs/org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop
-#     dest: /home/studivm/.local/share/applications/org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop
-#     state: link
+- name: Launcher entry for offline documentation
+  become_user: studivm
+  file:
+    src: /home/studivm/.local/share/org.gnome.Epiphany.WebApp-veins-offlinedocs/org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop
+    dest: /home/studivm/.local/share/applications/org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop
+    state: link
 
-# - name: Favourites
-#   become_user: studivm
-#   shell: |
-#     set -exu
-#     xvfb-run gsettings set org.gnome.shell favorite-apps "['omnetpp.desktop', 'veins_launchd.desktop', 'org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop', 'org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop', 'firefox-esr.desktop', 'org.gnome.Nautilus.desktop', 'terminator.desktop']"
+- name: Favourites
+  become_user: studivm
+  shell: |
+    set -exu
+    xvfb-run gsettings set org.gnome.shell favorite-apps "['omnetpp.desktop', 'veins_launchd.desktop', 'org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop', 'org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop', 'firefox-esr.desktop', 'org.gnome.Nautilus.desktop', 'terminator.desktop']"
 
 - name: Copy background picture
   become_user: studivm
