@@ -40,6 +40,9 @@
       - clang
       - ccache
       - xvfb
+      - docker.io
+      - curl
+      - htop 
 
 - name: Configure user
   user:
@@ -47,7 +50,7 @@
     comment: "StudiVM (password is studivm),,,"
     shell: /bin/zsh
     password: "$6$JMgmA/wRqOjSXFup$Y4PqJPH1lDRiEsvTIpeGZmTj9fOMwd9m8KLm4l8sGJ/eaqjP1LA3PpwWPS3JZrWxyU/zR2pubzYynFvlgr65v1"
-    groups: sudo,cdrom,floppy,dip,video,audio,plugdev,netdev,bluetooth
+    groups: sudo,cdrom,floppy,dip,video,audio,plugdev,netdev,bluetooth,docker
     append: yes
 
 - name: Prepare for Virtualbox guest tools installation (packages)
