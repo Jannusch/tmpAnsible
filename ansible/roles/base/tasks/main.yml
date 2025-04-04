@@ -28,7 +28,7 @@
   apt:
     state: present
     name:
-      - alaritty
+      - alacritty
       - vim-gtk3
       - task-gnome-desktop
       - zsh
