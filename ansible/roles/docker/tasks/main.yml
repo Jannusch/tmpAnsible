@@ -35,6 +35,7 @@
     git clone https://github.com/sommer/veins --branch veins-5.3.1
 
 - name: Pull nsm-lab-container
+  become_user: studivm
   community.docker.docker_container:
     name: initopp
     image: dr.nsm.inf.tu-dresden.de/tud-internal/nsm-lab-container:ws24
@@ -45,7 +46,7 @@
         source: /home/studivm/workspaces
         type: bind
     volumes:
-      - studivm/.Xauthority:/root/.Xauthority:rw
+      - /home/studivm/.Xauthority:/root/.Xauthority:rw
       - /tmp/.X11-unix:/tmp/.X11-unix
     env:
       DISPLAY: $DISPLAY
