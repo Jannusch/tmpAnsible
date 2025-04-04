@@ -163,6 +163,16 @@
     dest: "/var/lib/AccountsService/icons/studivm"
     mode: 0644
 
+- name: Activate profile picture
+  copy:
+    content: |
+      [User]
+      Session=
+      Icon=/var/lib/AccountsService/icons/studivm
+      SystemAccount=false
+    dest: /var/lib/AccountsService/users/studivm
+    mode: 0644
+
 - name: Disable Screensaver
   become_user: studivm
   shell: |
