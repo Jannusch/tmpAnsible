@@ -59,7 +59,7 @@
       [Desktop Entry]
       Type=Application
       Name=veins_launchd
-      Exec=xterm -class docker exec initopp -c "export PATH=$PATH:/opt/sumo/bin && veins_launchd -e /opt/veins/bin/veins_launchd -vv"
+      Exec=terminator -e docker exec initopp -c "export PATH=$PATH:/opt/sumo/bin && veins_launchd -e /opt/veins/bin/veins_launchd -vv"
       Icon=network-transmit-receive-symbolic
       Categories=Science;
       StartupWMClass=veins_launchd
