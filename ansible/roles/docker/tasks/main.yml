@@ -50,6 +50,6 @@
       - /home/studivm/.Xauthority:/root/.Xauthority:rw
       - /tmp/.X11-unix:/tmp/.X11-unix
     env:
-      DISPLAY: $DISPLAY
+      DISPLAY: :1
     interactive: true
 
