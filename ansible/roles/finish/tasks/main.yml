@@ -157,6 +157,12 @@
     set -exu
     xvfb-run gsettings set org.gnome.desktop.background picture-uri 'file:///home/studivm/Documents/veins-background.jpg'
 
+- name: Copy profile picture
+  copy:
+    src: "stuivm.png"
+    dest: "/var/lib/AccountsService/icons/studivm"
+    mode: 0644
+
 - name: Disable Screensaver
   become_user: studivm
   shell: |
