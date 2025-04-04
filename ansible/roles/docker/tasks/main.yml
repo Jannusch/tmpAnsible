@@ -51,4 +51,5 @@
       - /tmp/.X11-unix:/tmp/.X11-unix
     env:
       DISPLAY: $DISPLAY
+    interactive: true
 
