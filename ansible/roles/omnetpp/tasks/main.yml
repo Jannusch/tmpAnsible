@@ -38,7 +38,7 @@
   become_user: studivm
   copy:
     src: "import.sh"
-    dest: "/home/workspaces/import.sh"
+    dest: "/home/studivm/workspaces/import.sh"
     mode: 0777    
 
 - name: Import things in opp
