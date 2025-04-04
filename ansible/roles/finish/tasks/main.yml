@@ -200,6 +200,8 @@
     content: |
       # Load common environment variables and shell config
       . ~/.shrc
+      # allow gui from docker
+      xhost +local:docker
     dest: /home/studivm/.profile
     mode: 0755
 
