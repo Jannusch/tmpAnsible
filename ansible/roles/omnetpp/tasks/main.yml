@@ -34,11 +34,6 @@
       dest: "/home/studivm/.local/share/omnetpp/icon.xpm"
       mode: 0644
 
-- name: Set default working dir
-  become_user: studivm
-  shell: |
-    docker exec initopp bash -c "sed -i 's/DEFAULT_WORKSPACE_ARGS="-vmargs -Dosgi\.instance\.area\.default=\$IDEDIR\/\.\.\/samples"/DEFAULT_WORKSPACE_ARGS="-vmargs -Dosgi\.instance\.area\.default=\/workspaces\/omnetpp\.workspace"/g' /opt/omnetpp/bin/opp_ide"
-
 - name: Copy import script
   become_user: studivm
   copy:

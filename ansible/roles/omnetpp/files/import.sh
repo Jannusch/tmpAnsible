@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "Setting working dir"
+sed -i 's/DEFAULT_WORKSPACE_ARGS="-vmargs -Dosgi\.instance\.area\.default=\$IDEDIR\/\.\.\/samples"/DEFAULT_WORKSPACE_ARGS="-vmargs -Dosgi\.instance\.area\.default=\/workspaces\/omnetpp\.workspace"/g' /opt/omnetpp/bin/opp_ide
+
 echo "Importing Software to OMNeT++"
 for i in 'inet' 'veins'; do 
     xvfb-run /opt/omnetpp/bin/omnetpp -data /workspaces/omnetpp.workspace -nosplash -application org.eclipse.cdt.managedbuilder.core.headlessbuild -import $i &> import.log
