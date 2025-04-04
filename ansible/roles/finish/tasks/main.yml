@@ -159,7 +159,7 @@
 
 - name: Copy profile picture
   copy:
-    src: "studivm.png"
+    src: "studivm"
     dest: "/var/lib/AccountsService/icons/studivm"
     mode: 0644
 
