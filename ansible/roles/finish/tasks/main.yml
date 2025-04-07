@@ -52,6 +52,20 @@
     dest: /home/studivm/.local/share/applications/omnetpp.desktop
     mode: 0755
 
+- name: Docker terminal
+  become_user: studivm
+  copy:
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Name=Docker Terminal
+      Exec=alacritty -e docker exec -it initopp bash
+      Icon=terminal
+      Categories=Science;
+      StartupWMClass=Docker Terminal
+    dest: /home/studivm/.local/share/applications/dockerTerm.desktop
+    mode: 0755
+
 - name: Launcher Entry
   become_user: studivm
   copy:
