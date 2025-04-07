@@ -33,7 +33,7 @@
   become_user: studivm
   community.docker.docker_container:
     name: initopp
-    image: dr.nsm.inf.tu-dresden.de/tud-internal/nsm-lab-container:ws24
+    image: dr.nsm.inf.tu-dresden.de/tud-internal/nsm-lab-container:s25
     state: started
     restart_policy: always
     mounts:
