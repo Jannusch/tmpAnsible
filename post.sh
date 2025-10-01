@@ -4,7 +4,8 @@ echo "start pre script"
 sudo apt -y update
 sudo apt -y upgrade
 sudo apt -y install ansible \
-  docker;
+  docker.io \
+  ;
 cd ansible;
 ansible-playbook --connection=local --inventory 127.0.0.1, studivm.yml
 cd ..

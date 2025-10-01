@@ -45,7 +45,7 @@
       [Desktop Entry]
       Type=Application
       Name=OMNeT++ IDE
-      Exec=docker exec initopp bash -c "source /opt/omnetpp/setenv && omnetpp"
+      Exec=docker exec initopp bash -c "source /etc/profile.d/01-docker-env.sh && omnetpp"
       Icon=/home/studivm/.local/share/omnetpp/icon.xpm
       Categories=Science;
       StartupWMClass=OMNeT++ IDE
@@ -59,8 +59,8 @@
       [Desktop Entry]
       Type=Application
       Name=Docker Terminal
-      Exec=alacritty -e docker exec -it initopp bash
-      Icon=terminal
+      Exec=alacritty -e docker exec -it initopp bash -c "source /etc/profile.d/01-docker-env.sh && bash"
+      Icon=utilities-terminal-symbolic
       Categories=Science;
       StartupWMClass=Docker Terminal
     dest: /home/studivm/.local/share/applications/dockerTerm.desktop
@@ -156,7 +156,7 @@
   become_user: studivm
   shell: |
     set -exu
-    xvfb-run gsettings set org.gnome.shell favorite-apps "['omnetpp.desktop', 'veins_launchd.desktop', 'org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop', 'org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop', 'firefox-esr.desktop', 'org.gnome.Nautilus.desktop', 'terminator.desktop']"
+    xvfb-run gsettings set org.gnome.shell favorite-apps "['omnetpp.desktop', 'veins_launchd.desktop', 'org.gnome.Epiphany.WebApp-veins-onlinedocs.desktop', 'org.gnome.Epiphany.WebApp-veins-offlinedocs.desktop', 'firefox-esr.desktop', 'org.gnome.Nautilus.desktop', 'terminator.desktop', 'dockerTerm.desktop']"
 
 - name: Copy background picture
   become_user: studivm
