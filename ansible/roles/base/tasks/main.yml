@@ -43,6 +43,7 @@
       - docker.io
       - curl
       - htop
+      - openssh-server
 
 - name: Remove gnome-terminal
   apt:
