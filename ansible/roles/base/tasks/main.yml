@@ -44,6 +44,9 @@
       - curl
       - htop
       - openssh-server
+      - gcc
+      - make
+      - perl
 
 - name: Remove gnome-terminal
   apt:
