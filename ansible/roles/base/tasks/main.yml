@@ -68,6 +68,14 @@
     state: present
     name:
       - linux-headers-amd64
+  when: ansible_facts.ansible_architecture == "x86_64"
+
+- name: Prepare for Virtualbox guest tools installation (packages)
+  apt:
+    state: present
+    name:
+      - linux-headers-arm64
+  when: ansible_facts.ansible_architecture == "arm64"
 
 - name: Prepare for Virtualbox guest tools installation (group 1)
   group:
