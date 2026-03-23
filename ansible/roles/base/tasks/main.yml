@@ -20,7 +20,9 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
-
+- name: Set architecture
+  set_fact:
+    arch: "{{ 'arm64' if ansible_facts.architecture == 'aarch64' else 'amd64' }} "
 - name: Update apt
   apt: update_cache=yes
 
@@ -67,15 +69,8 @@
   apt:
     state: present
     name:
-      - linux-headers-amd64
-  when: ansible_facts.ansible_architecture == "x86_64"
+      - linux-headers-{{arch}}
 
-- name: Prepare for Virtualbox guest tools installation (packages)
-  apt:
-    state: present
-    name:
-      - linux-headers-arm64
-  when: ansible_facts.ansible_architecture == "arm64"
 
 - name: Prepare for Virtualbox guest tools installation (group 1)
   group:
